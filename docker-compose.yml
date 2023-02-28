@@ -1,0 +1,18 @@
+version: "3.8"
+services:
+  db:
+    image: postgres:13.2
+    network_mode: host
+    environment:
+      POSTGRES_DB: fusionpbx
+      POSTGRES_USER: fusionpbx
+      POSTGRES_PASSWORD: fusionpbx
+  fusionpbx:
+    image: fusionpbx:latest
+    network_mode: host
+    depends_on:
+            - db
+    environment:
+      DB_HOST: localhost
+      DB_USER: fusionpbx
+      DB_PASS: fusionpbx
